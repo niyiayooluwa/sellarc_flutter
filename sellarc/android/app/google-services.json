@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "854634233048",
+    "project_id": "sellarc",
+    "storage_bucket": "sellarc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854634233048:android:82c38fec284b0ce94a6bad",
+        "android_client_info": {
+          "package_name": "com.sellarc.sellarc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4Kv7vqRIIOKk4HHvjJ8Lbc0C2hi8CDbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
