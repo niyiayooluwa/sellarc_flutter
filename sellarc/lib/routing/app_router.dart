@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final authProvider = StreamProvider<User?>(
-      (ref) => FirebaseAuth.instance.authStateChanges(),
+  (ref) => FirebaseAuth.instance.authStateChanges(),
 );
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -14,7 +14,9 @@ final routerProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     initialLocation: '/',
-    refreshListenable: GoRouterRefreshStream(FirebaseAuth.instance.authStateChanges()),
+    refreshListenable: GoRouterRefreshStream(
+      FirebaseAuth.instance.authStateChanges(),
+    ),
     redirect: (context, state) {
       final user = FirebaseAuth.instance.currentUser;
       final isSplash = state.matchedLocation == '/';
@@ -31,7 +33,6 @@ final routerProvider = Provider<GoRouter>((ref) {
   );
 });
 
-
 class GoRouterRefreshStream extends ChangeNotifier {
   GoRouterRefreshStream(Stream<dynamic> stream) {
     _subscription = stream.asBroadcastStream().listen((_) {
@@ -47,4 +48,3 @@ class GoRouterRefreshStream extends ChangeNotifier {
     super.dispose();
   }
 }
-
