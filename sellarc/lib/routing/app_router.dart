@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../ui/onboarding/onboarding_screen.dart';
+import '../ui/splash/screen.dart';
+
 final authProvider = StreamProvider<User?>(
   (ref) => FirebaseAuth.instance.authStateChanges(),
 );
@@ -20,14 +23,22 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final user = FirebaseAuth.instance.currentUser;
       final isSplash = state.matchedLocation == '/';
+      final isOnboarding = state.matchedLocation == '/onboarding';
 
-      if (user == null && !isSplash) return '/';
-      if (user != null && isSplash) return '/dashboard';
+      if (user == null && !isSplash && !isOnboarding) return '/';
+      if (user != null && isSplash) return '/onboarding';
       return null;
     },
     routes: [
-      //GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
-      //GoRoute(path: '/onboarding', builder: (context, state) => const OnboardingScreen()),
+      GoRoute(
+          path: '/',
+          builder: (context, state) => const SplashScreen(),
+      ),
+
+      GoRoute(
+        path: '/onboarding',
+        builder: (context, state) => const OnboardingScreen(),
+      ),
       //GoRoute(path: '/dashboard', builder: (context, state) => const DashboardScreen()),
     ],
   );
