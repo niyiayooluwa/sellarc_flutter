@@ -9,7 +9,7 @@ class AuthScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: Column(children: []),
+          child: Stack(children: []),
         ),
       ),
     );

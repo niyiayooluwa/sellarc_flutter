@@ -9,30 +9,37 @@ version: 1.0.0+1
 environment:
   sdk: ^3.8.1
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
+# Application dependencies.
+# These are packages that the application code directly depends on.
+# For more information about managing dependencies, see https://flutter.dev/to/dependencies.
 dependencies:
   flutter:
     sdk: flutter
+
+  # UI and Theming
   cupertino_icons: ^1.0.8
-  firebase_core: ^3.15.1
-  firebase_auth: ^5.0.0
-  go_router: ^16.0.0
+  flutter_svg: ^2.0.0
+  #google_fonts: ^6.1.0 # Uncomment if you plan to use Google Fonts
+  smooth_page_indicator: ^1.2.1
+
+  # State Management
+  flutter_riverpod: ^2.6.1
   hooks_riverpod: ^2.5.1
   flutter_hooks: ^0.20.5
   riverpod_annotation: ^2.3.3
-  flutter_riverpod: ^2.6.1
-  flutter_svg: ^2.0.0
-  #dio: ^5.4.0
-  #google_fonts: ^6.1.0
+
+  # Firebase
+  firebase_core: ^3.15.1
+  firebase_auth: ^5.0.0
+  google_sign_in: ^6.2.1 # Added Google Sign-In
+
+  # Routing
+  go_router: ^16.0.0
+
+  # Utility
   intl: ^0.18.0
-  riverpod_generator: ^2.6.5
   shared_preferences: ^2.0.1
-  smooth_page_indicator: ^1.2.1
+  #dio: ^5.4.0 # Uncomment if you plan to use Dio for HTTP requests
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +47,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   custom_lint: ^0.7.5
   build_runner: ^2.4.7
+  riverpod_generator: ^2.6.5 # Moved here as it's a code generator
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

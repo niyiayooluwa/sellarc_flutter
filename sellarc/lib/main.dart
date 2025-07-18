@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sellarc/providers/auth_providers.dart';
 import 'package:sellarc/routing/app_router.dart';
+
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -20,6 +22,15 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigoAccent),
       ),
+      builder: (context, child) {
+        final auth = ref.watch(authStateChangesProvider);
+
+        return auth.when(
+          loading: () => const Scaffold(body: Center(child: CircularProgressIndicator())),
+          error: (_, __) => const Scaffold(body: Center(child: Text('Auth error'))),
+          data: (_) => child!,
+        );
+      },
       routerConfig: router,
     );
   }

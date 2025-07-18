@@ -70,6 +70,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '854634233048',
     projectId: 'sellarc',
     storageBucket: 'sellarc.firebasestorage.app',
+    androidClientId: '854634233048-ias9efm0p7p9mh2sco92jfnat2oggquj.apps.googleusercontent.com',
+    iosClientId: '854634233048-h5n0sfjfehgk246hpogpje8tc4dbpij0.apps.googleusercontent.com',
     iosBundleId: 'com.sellarc.sellarc',
   );
+
 }

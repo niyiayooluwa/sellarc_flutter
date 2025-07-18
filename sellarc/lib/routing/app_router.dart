@@ -4,16 +4,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sellarc/providers/auth_providers.dart';
 
 import '../ui/onboarding/onboarding_screen.dart';
 import '../ui/splash/screen.dart';
 
-final authProvider = StreamProvider<User?>(
-  (ref) => FirebaseAuth.instance.authStateChanges(),
-);
-
 final routerProvider = Provider<GoRouter>((ref) {
-  final authState = ref.watch(authProvider);
+  final authState = ref.watch(authStateChangesProvider);
 
   return GoRouter(
     initialLocation: '/',
@@ -21,19 +18,21 @@ final routerProvider = Provider<GoRouter>((ref) {
       FirebaseAuth.instance.authStateChanges(),
     ),
     redirect: (context, state) {
-      final user = FirebaseAuth.instance.currentUser;
       final isSplash = state.matchedLocation == '/';
       final isOnboarding = state.matchedLocation == '/onboarding';
 
-      if (user == null && !isSplash && !isOnboarding) return '/';
-      if (user != null && isSplash) return '/onboarding';
-      return null;
+      return authState.when(
+        loading: () => null, // Stay put while checking auth state
+        error: (_, __) => '/', // Optional: route to splash on error
+        data: (user) {
+          if (user == null && !isSplash && !isOnboarding) return '/';
+          if (user != null && isSplash) return '/onboarding';
+          return null;
+        },
+      );
     },
     routes: [
-      GoRoute(
-          path: '/',
-          builder: (context, state) => const SplashScreen(),
-      ),
+      GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
 
       GoRoute(
         path: '/onboarding',

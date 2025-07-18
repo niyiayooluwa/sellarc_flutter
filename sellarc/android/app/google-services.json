@@ -12,7 +12,20 @@
           "package_name": "com.sellarc.sellarc"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "854634233048-ias9efm0p7p9mh2sco92jfnat2oggquj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sellarc.sellarc",
+            "certificate_hash": "deb483b213cd9b322ae54a8b00b1855be516f31b"
+          }
+        },
+        {
+          "client_id": "854634233048-5rmemfi9oltf637q72oad5j3dv58lerh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB4Kv7vqRIIOKk4HHvjJ8Lbc0C2hi8CDbc"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854634233048-5rmemfi9oltf637q72oad5j3dv58lerh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "854634233048-h5n0sfjfehgk246hpogpje8tc4dbpij0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sellarc.sellarc"
+              }
+            }
+          ]
         }
       }
     }
